@@ -15,9 +15,6 @@ pipeline {
             steps {
                 script {
                     app = docker.build("touzimed/train-schedule")
-                    app.inside {
-                        sh 'echo $(pwd)'
-                    }
                 }
             }
         }
