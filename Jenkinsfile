@@ -15,9 +15,9 @@ pipeline {
             steps {
                 script {
                     app = docker.build("touzimed/train-schedule")
-                    app.inside {
-                        sh 'echo $(curl localhost:8080)'
-                    }
+                    //app.inside {
+                      //  sh 'echo $(curl localhost:8080)'
+                    //}
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-login') {
-                        //app.push("${env.BUILD_NUMBER}")
+                        app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
                 }
